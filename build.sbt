@@ -32,7 +32,7 @@ lazy val root = (project in file(".")).enablePlugins(JavaAppPackaging).
       "com.typesafe.slick" %% "slick" % "3.2.3",
 
       // Postgres driver
-      "org.postgresql" % "postgresql" % "42.1.4",
+      "org.postgresql" % "postgresql" % "42.4.1",
       // Migration for SQL databases
       "org.flywaydb" % "flyway-core" % "5.2.4",
 

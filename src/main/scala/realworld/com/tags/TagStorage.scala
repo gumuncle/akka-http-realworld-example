@@ -1,10 +1,10 @@
 package realworld.com.tags
 
-import realworld.com.articles.{ArticleTagTable, TagTable, TagV}
+import realworld.com.articles.{ ArticleTagTable, TagTable, TagV }
 import realworld.com.utils.DatabaseConnector
 
-import scala.concurrent.{ExecutionContext, Future}
-import slick.dbio.{DBIO, DBIOAction}
+import scala.concurrent.{ ExecutionContext, Future }
+import slick.dbio.{ DBIO, DBIOAction }
 
 import slick.jdbc.PostgresProfile.api.{
   DBIO => _,

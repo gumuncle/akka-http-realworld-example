@@ -1,7 +1,7 @@
 package realworld.com.utils
 
 import java.text.SimpleDateFormat
-import java.util.{Date, TimeZone}
+import java.util.{ Date, TimeZone }
 
 case class ISO8601()
 object ISO8601 {

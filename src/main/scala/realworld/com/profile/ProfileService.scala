@@ -2,15 +2,16 @@ package realworld.com.profile
 
 import realworld.com.core.User
 import realworld.com.users.UserStorage
-import realworld.com.utils.{DBIOOptional, StorageRunner}
+import realworld.com.utils.{ DBIOOptional, StorageRunner }
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 class ProfileService(runner: StorageRunner, userStorage: UserStorage)(
-    implicit
-    executionContext: ExecutionContext) {
-  def getProfile(userId: Long,
-                 username: String): Future[Option[ResponseProfile]] =
+  implicit
+  executionContext: ExecutionContext) {
+  def getProfile(
+    userId: Long,
+    username: String): Future[Option[ResponseProfile]] =
     runner.run((for {
       p <- DBIOOptional(userStorage.getUserByUsername(username))
       isFollowing <- DBIOOptional(
@@ -29,8 +30,9 @@ class ProfileService(runner: StorageRunner, userStorage: UserStorage)(
       ResponseProfile(Profile(p.username, p.bio, p.image, true))
     }).dbio)
 
-  def unfollow(userId: Long,
-               username: String): Future[Option[ResponseProfile]] =
+  def unfollow(
+    userId: Long,
+    username: String): Future[Option[ResponseProfile]] =
     runner.runInTransaction((for {
       p <- DBIOOptional(userStorage.getUserByUsername(username))
       _ <- DBIOOptional(userStorage.unfollow(userId, p.id).map(Some(_)))

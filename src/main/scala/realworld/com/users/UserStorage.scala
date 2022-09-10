@@ -1,7 +1,7 @@
 package realworld.com.users
 
 import realworld.com.core.User
-import realworld.com.profile.{UserFollower, UserFollowersTable}
+import realworld.com.profile.{ UserFollower, UserFollowersTable }
 import slick.dbio.DBIO
 import slick.jdbc.PostgresProfile.api.{
   DBIO => _,
@@ -29,9 +29,9 @@ trait UserStorage {
 }
 
 class JdbcUserStorage
-    extends UserProfileTable
-    with UserStorage
-    with UserFollowersTable {
+  extends UserProfileTable
+  with UserStorage
+  with UserFollowersTable {
 
   def getUsers(): DBIO[Seq[User]] = users.result
 

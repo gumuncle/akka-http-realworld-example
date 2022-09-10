@@ -8,8 +8,9 @@ import io.circe.syntax._
 import scala.concurrent.ExecutionContext
 
 class ProfileRoute(secretKey: String, profileService: ProfileService)(
-    implicit executionContext: ExecutionContext)
-    extends FailFastCirceSupport {
+  implicit
+  executionContext: ExecutionContext)
+  extends FailFastCirceSupport {
 
   import StatusCodes._
   import profileService._

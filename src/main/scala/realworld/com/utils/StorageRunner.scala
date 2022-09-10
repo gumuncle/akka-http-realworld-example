@@ -2,7 +2,7 @@ package realworld.com.utils
 
 import slick.dbio.DBIO
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 import slick.jdbc.PostgresProfile.api.{
   DBIO => _,
   MappedTo => _,

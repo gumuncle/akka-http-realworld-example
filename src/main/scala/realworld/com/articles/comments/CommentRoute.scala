@@ -3,9 +3,9 @@ package realworld.com.articles.comments
 import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.server.Directives._
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
-import realworld.com.articles.{ArticleRoute, ArticleService, comments}
-import realworld.com.profile.{ProfileRoute, ProfileService}
-import realworld.com.users.{UserRoute, UserService}
+import realworld.com.articles.{ ArticleRoute, ArticleService, comments }
+import realworld.com.profile.{ ProfileRoute, ProfileService }
+import realworld.com.users.{ UserRoute, UserService }
 import io.circe.generic.auto._
 import io.circe.syntax._
 import akka.http.scaladsl.model.StatusCodes
@@ -13,8 +13,9 @@ import akka.http.scaladsl.model.StatusCodes
 import scala.concurrent.ExecutionContext
 
 class CommentRoute(secretKey: String, commentService: CommentService)(
-    implicit executionContext: ExecutionContext)
-    extends FailFastCirceSupport {
+  implicit
+  executionContext: ExecutionContext)
+  extends FailFastCirceSupport {
 
   import akka.http.scaladsl.model.StatusCodes._
   import realworld.com.utils.JwtAuthDirectives._
@@ -30,7 +31,7 @@ class CommentRoute(secretKey: String, commentService: CommentService)(
             entity(as[CommentRequest]) { comment =>
               complete(createComment(slug, userId, comment).map {
                 case Some(x) => OK -> x.asJson
-                case None    => NotFound -> None.asJson
+                case None => NotFound -> None.asJson
               })
             }
           }
